@@ -2,10 +2,10 @@
 {
     public class FilterModel
     {
-        public string? name { get; set; }
-        public string? facultad { get; set; }
-        public string? programa { get; set; }
-        public string? nivel { get; set; }
-        public string? tipo { get; set; }
+        public string? Name { get; set; }
+        public required string Facultad { get; set; }
+        public required string Programa { get; set; }
+        public string? Nivel { get; set; }
+        public string? Tipo { get; set; }
     }
 }

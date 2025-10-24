@@ -9,6 +9,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<API_Cursos_Test.Interfaces.ICursosSearch, API_Cursos_Test.Repository.CursosSearchRepository>();
 builder.Services.AddScoped<API_Cursos_Test.Interfaces.IFilterCursos, API_Cursos_Test.Repository.FilterRepository>();
+builder.Services.AddScoped<API_Cursos_Test.Interfaces.ILoadDataExcel, API_Cursos_Test.Repository.LoadDataExcelRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

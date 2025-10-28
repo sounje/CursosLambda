@@ -18,16 +18,16 @@ namespace API_Cursos_Test.Repository
             {
                 using (var command = new SqlCommand("InsertExcelData", connection))
                 {
-                    // Especificar el tipo explícitamente, por ejemplo CursoModel
+                    // Especificar el tipo explícitamente, DataExcelImportModel
                     var x = model.ImportFile.ReadDataFromExcel<DataExcelImportModel>();
                     DataTable cursosTable = x.ToDataTable();
 
                     command.CommandType = CommandType.StoredProcedure;
                     SqlParameter tvpParam = command.Parameters.AddWithValue("@data", cursosTable);
                     tvpParam.SqlDbType = SqlDbType.Structured;
-                    command.Parameters.AddWithValue("@periodo", model.Periodo);
-                    command.Parameters.AddWithValue("@usuario", model.Usuario);
-                    command.Parameters.AddWithValue("@nombre", model.ImportFile.FileName);
+                    command.Parameters.AddWithValue("@period", model.Periodo);
+                    command.Parameters.AddWithValue("@user", model.Usuario);
+                    command.Parameters.AddWithValue("@name", model.ImportFile.FileName);
                     try
                     {
                         await connection.OpenAsync();

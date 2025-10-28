@@ -28,23 +28,23 @@ namespace API_Cursos_Test.Repository
                     command.Parameters.AddWithValue("@periodo", model.Periodo);
                     command.Parameters.AddWithValue("@usuario", model.Usuario);
                     command.Parameters.AddWithValue("@nombre", model.ImportFile.FileName);
-                    //try
-                    //{
-                    //    await connection.OpenAsync();
-                    //    await command.ExecuteNonQueryAsync();
+                    try
+                    {
+                        await connection.OpenAsync();
+                        await command.ExecuteNonQueryAsync();
 
-                    //    return true;
-                    //}
-                    //catch (SqlException)
-                    //{
-                    //    if (connection.State != ConnectionState.Closed)
-                    //    {
-                    //        await connection.CloseAsync();
-                    //    }
-                    //    //throw;
-                    //    return false;
-                    //}
-                    return true;
+                        return true;
+                    }
+                    catch (SqlException)
+                    {
+                        if (connection.State != ConnectionState.Closed)
+                        {
+                            await connection.CloseAsync();
+                        }
+                        //throw;
+                        return false;
+                    }
+                   
                 }
             }
         }

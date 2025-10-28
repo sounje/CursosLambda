@@ -2,6 +2,8 @@
 {
     public class DataExcelModel
     {
+        
+
         public required string Faculty { get; set; }
         public required string CodeCareer { get; set; }
         public required string Career { get; set; }
@@ -21,5 +23,23 @@
         public required string Period { get; set; }
         public required IEnumerable<DataExcelModel> Data { get; set; }
         
+    }
+
+    public class DataExcelImportModel
+    {
+
+
+        public  string? Faculty { get; set; }
+        public  string? CodeCareer { get; set; }
+        public  string? Career { get; set; }
+        public  string? CodeDirection { get; set; }
+        public  string? Direction { get; set; }
+        public  string? Course { get; set; }
+        public  string? CodeCourse { get; set; }
+        public  string? Tipo { get; set; }
+        public  int? Credits { get; set; }
+        public  string? Incoming { get; set; }
+        public  string? Graduate { get; set; }
+        public  string? Requirement { get; set; }
     }
 }

@@ -4,6 +4,7 @@ namespace API_Cursos_Test.Interfaces
 {
     public interface ILoadDataExcel
     {
-        Task<bool> SendDataExcel(DataToSend model);
+        Task<bool> SendDataJson(DataToSend model);
+        Task<bool> SendDataExcel(UploadRequest model);
     }
 }

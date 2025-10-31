@@ -38,7 +38,8 @@ namespace API_Cursos_Test.Repository
                                 Faculty = reader.GetString("Faculty"),
                                 Type = reader.GetString("Type"),
                                 Incoming = reader.GetString("Incoming"),
-                                Graduate = reader.GetString("Graduate"),
+                                Graduate = reader.GetString("Graduate") ?? "",
+                                //Graduate = reader["Graduate"]?.ToString() ?? "",
                                 Requirement = reader.GetString("Requirement")
                             });
                         }

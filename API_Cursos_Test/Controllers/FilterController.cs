@@ -1,11 +1,12 @@
 ﻿using API_Cursos_Test.Interfaces;
 using API_Cursos_Test.Model;
+using DocumentFormat.OpenXml.Bibliography;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API_Cursos_Test.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class FilterController(IFilterCursos _repos) : ControllerBase
     {
@@ -17,9 +18,10 @@ namespace API_Cursos_Test.Controllers
         }
 
         [HttpPost("GetCareers")]
-        public async Task<IActionResult> GetCareerList([FromBody] Guid id)
+        public async Task<IActionResult> GetCareerList([FromBody] IdFacultyModel id)
         {
-            var result = await _repos.GetCareerList(id);
+            Guid idGuid = Guid.Parse(id.Id);
+            var result = await _repos.GetCareerList(idGuid);
             return Ok(result);
         }
 

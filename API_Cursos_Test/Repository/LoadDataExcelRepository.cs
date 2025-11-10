@@ -18,16 +18,30 @@ namespace API_Cursos_Test.Repository
             {
                 using (var command = new SqlCommand("InsertExcelData", connection))
                 {
-                    // Especificar el tipo explícitamente, DataExcelImportModel
-                    var x = model.ImportFile.ReadDataFromExcel<DataExcelImportModel>();
-                    DataTable cursosTable = x.ToDataTable();
+                   
+                    try
+                    {
+                        // Especificar el tipo explícitamente, DataExcelImportModel
+                        Console.WriteLine(model.ImportFile);
+                        var x = model.ImportFile.ReadDataFromExcel<DataExcelImportModel>();
+                        Console.WriteLine(x);
+                        DataTable cursosTable = x.ToDataTable();
+                        Console.WriteLine(cursosTable);
+                        command.CommandType = CommandType.StoredProcedure;
+                        SqlParameter tvpParam = command.Parameters.AddWithValue("@data", cursosTable);
+                        tvpParam.SqlDbType = SqlDbType.Structured;
+                        command.Parameters.AddWithValue("@period", model.Periodo);
+                        command.Parameters.AddWithValue("@user", model.Usuario);
+                        command.Parameters.AddWithValue("@name", model.ImportFile.FileName);
+                    }
+                    catch (Exception ex)
+                    {
 
-                    command.CommandType = CommandType.StoredProcedure;
-                    SqlParameter tvpParam = command.Parameters.AddWithValue("@data", cursosTable);
-                    tvpParam.SqlDbType = SqlDbType.Structured;
-                    command.Parameters.AddWithValue("@period", model.Periodo);
-                    command.Parameters.AddWithValue("@user", model.Usuario);
-                    command.Parameters.AddWithValue("@name", model.ImportFile.FileName);
+                        Console.WriteLine(ex);
+                        throw;
+                    }
+
+                   
                     try
                     {
                         await connection.OpenAsync();

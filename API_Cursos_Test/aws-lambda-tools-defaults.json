@@ -1,0 +1,20 @@
+{
+  "region": "us-east-2",
+  "profile": "UserLambdaCursos",
+  "configuration": "Release",
+  "framework": "net8.0",
+  "function-name": "API_Cursos_Test",
+  "package-type": "Zip",
+  "function-handler": "API_Cursos_Test",
+  "function-memory-size": 512,
+  "function-role": "arn:aws:iam::698056691036:role/service-role/ServicesNet8-role-uosbpxan",
+  "function-timeout": 30,
+  "function-runtime": "dotnet8",
+  "function-architecture": "x86_64",
+  "function-subnets": "subnet-0d3cc855ec59b6578,subnet-01d9a4d82bbc8771b,subnet-00e91d49dff11290a",
+  "function-security-groups": "sg-09b137ba08abc42d9",
+  "tracing-mode": "PassThrough",
+  "environment-variables": "\u0022ASPNETCORE_ENVIROMMENT\u0022=\u0022Development\u0022",
+  "image-tag": "",
+  "function-description": ""
+}

@@ -6,4 +6,9 @@
         public required string Name { get; set; }
     
     }
+
+    public class IdFacultyModel
+    {
+        public required string Id { get; set; }
+    }
 }
